@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.models import User
-from .models import Message
+from Chat.models import Message
+from loginpage.models import Client
 from django.http import JsonResponse
 from django.db.models import Q
 from django.http import HttpResponseRedirect
@@ -41,8 +42,8 @@ def contacts_list(request):
     context = {}
     context['valid'] = True
     if user.is_active:    
-        users = User.objects.all().exclude(username=user)
-        print(users[0].id)
+        users = Client.objects.all().exclude(username=user)
+        print(users[0].username)
         context['users'] = users
     else:
         context['valid'] = False
