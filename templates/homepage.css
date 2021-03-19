@@ -1,0 +1,15 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+  
+  background-image: url(https://freepiker-storage.s3.amazonaws.com/preview/light-background-with-gradient-color-background-1572631119-preview.jpg);
+    background-repeat: repeat;
+  
+    background-size: 100%;
+    background-blend-mode:luminosity;}
+  
+
+  
+}
