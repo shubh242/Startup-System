@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codeshala | {% block title %} {% endblock %}</title>
+    <title>VH-21-21-The-Khacharrs | {% block title %} {% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" integrity="sha384-5QFXyVb+lrCzdN228VS3HmzpiE7ZVwLQtkt+0d9W43LQMzz4HBnnqvVxKg6O+04d" crossorigin="anonymous">
     {% block upscript %} {% endblock %}
 </head>
 <body>
 
     <!-- Navigation -->
-    <!-- {% if user.is_active %}
-    {% if not user.emp %}
-        {% include 'partials/_navbar_organization.html' %}
+    {% if user.is_active %}
+        {% if user.is_mentor %}
+            {% include 'partials/_navbar_mentor.html' %}
+        {% else %}
+            {% include 'partials/_navbar.html' %}
+        {% endif %}
     {% else %}
-        {% include 'partials/_navbar_emp.html' %}
-    {% endif %}
-    {% else %}
-    {% include 'partials/_navbar_ano.html' %}
+        {% include 'partials/_navbar_ano.html' %}
     {% endif %}
 
     {% block image %}
-    {% endblock %} -->
+    {% endblock %} 
     <!-- Heading -->
     <div class="col-md-10 mx-auto text-center mt-5 mb-5 h3">
         {% block header %}{% endblock %}

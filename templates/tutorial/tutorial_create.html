@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Tutorials Create
+{% endblock %}
+
+{% block upscript %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock %}
+
+{% block header %}
+Tutorials
+{% endblock %}
+
+{% block subheader %}
+{% endblock %}
+
+{% block content %}
+<form method = "POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Tutorial Title</label>
+        <input type="text" class="form-control" name = "title" id="title" placeholder="Example input placeholder">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Tutorial Description</label>
+        <input type="text" class="form-control" id="description" name="description">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Tutorial Tags</label>
+        <input type="text" class="form-control" id="tags" name="tags">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Upload Your Video</label>
+        <input type="file" class="form-control" id="video" name="video">
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{% endblock %}
