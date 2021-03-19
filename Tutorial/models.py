@@ -7,6 +7,6 @@ class Tutorial(models.Model):
     tutorial_title = models.TextField(blank=True)
     tutorial_description = models.TextField(blank=True)
     tutorial_tags = models.TextField(blank=True)
-    tutorial_video = models.FileField(upload_to='videos')
+    tutorial_video = models.FileField(upload_to='img')
     tutorial_like = models.ManyToManyField(User , blank=True , related_name='tutorial_likes')
     timestamp = models.DateField(auto_now_add=True)
