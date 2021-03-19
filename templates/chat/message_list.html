@@ -27,7 +27,7 @@ Conversations
     <a href={% url 'message_list' user.id %} class="text-decoration-none">
       <div class="card col-md-5 my-4 mx-auto text-center border rounded-pill border-info mb-3">
         <div class="card-body pt-4">
-          <h5 class="text-decoration-none">{{user | title}}</h5>
+          <h5 class="text-decoration-none">{{user.username | title}}</h5>
         </div>
       </div>
     </a>

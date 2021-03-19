@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Signup
+{% endblock %}
+
+{% block header %}
+Sign Up 
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% if message %}
+        <div class="alert alert-danger col-md-8 mx-auto text-left mb-5" role="alert">
+            {{message}}
+        </div>
+    {% endif %}
+
+    <form method="POST" class="col-md-8 mx-auto text-left mb-5" align="center">
+            {% csrf_token %}
+        <div class="form-group">
+            <label for="formGroupExampleInput">Username</label>
+            <input type="text" class="form-control border border-info" id="formGroupExampleInput" placeholder="Name" name="username">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control border border-info" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" name="email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">About yourself</label>
+                <textarea class="form-control" id="description" rows="3" placeholder="Description" name="description"></textarea>
+            </div>
+            <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control border border-info" id="exampleInputPassword1" placeholder="Password" name="password">
+            </div>
+            <div class="form-group">
+            <label for="exampleInputPassword1">Retype Password</label>
+            <input type="password" class="form-control border border-info" id="exampleInputPassword1" placeholder="Retype Password" name="pass2">
+            </div>
+            <div class="row align-items-center remember">
+                <input type="checkbox" name="mentor"> Want to signup as a mentor
+            </div>
+            <button type="submit" class="btn btn-primary my-1">Create Account</button>
+        </form>
+    <div class="col-md-10 mx-auto mb-5" align="center">
+        <a href={% url 'login' %} class="btn btn-info">Already have an Account? Login Here</a>
+    </div>
+</div>
+{% endblock %}

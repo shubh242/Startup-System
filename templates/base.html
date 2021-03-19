@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VH-21-21-The-Khacharrs</title>
+    <title>VH-21-21-The-Khacharrs | {% block title %} {% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" integrity="sha384-5QFXyVb+lrCzdN228VS3HmzpiE7ZVwLQtkt+0d9W43LQMzz4HBnnqvVxKg6O+04d" crossorigin="anonymous">
     {% block upscript %} {% endblock %}
 </head>
 <body>
 
     <!-- Navigation -->
-    {% include 'partials/_navbar.html' %}
+    {% if user.is_active %}
+        {% if user.is_mentor %}
+            {% include 'partials/_navbar_mentor.html' %}
+        {% else %}
+            {% include 'partials/_navbar.html' %}
+        {% endif %}
+    {% else %}
+        {% include 'partials/_navbar_ano.html' %}
+    {% endif %}
 
     {% block image %}
     {% endblock %} 
