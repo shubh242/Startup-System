@@ -13,7 +13,9 @@ def showformdata(request):
             un = fm.cleaned_data['username']
             em = fm.cleaned_data['email']
             pw = fm.cleaned_data['password']
-            reg = User(username=un, email=em , password=pw)
+            tex=fm.cleaned_data['discription']
+
+            reg = User(username=un, email=em , password=pw,discription=tex)
             reg.save()
 
             return render(request,'loginpage/success.html',{'name': un})
