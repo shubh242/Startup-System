@@ -1,5 +1,6 @@
 from django import forms
 
+
 class StudentRegistration(forms.Form):
     username = forms.CharField()
     email = forms.EmailField()

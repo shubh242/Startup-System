@@ -17,13 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-import Chat,Tutorial,loginpage
+import Chat,Tutorial,loginpage,feedback
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('chat/', include('Chat.urls')),
     path('tutorial/',include('Tutorial.urls')),
-    path('',include('loginpage.urls'))
+    path('',include('loginpage.urls')),
+    path('feedback/',include('feedback.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

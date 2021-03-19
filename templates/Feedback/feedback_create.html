@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Feedbacks
+{% endblock %}
+
+{% block upscript %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock %}
+
+{% block header %}
+Feedbacks
+{% endblock %}
+
+{% block subheader %}
+{% endblock %}
+
+{% block content %}
+<form method = "POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">UserName</label>
+        <input type="text" class="form-control" name = "username" id="title" placeholder="Example input placeholder">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Your Thoughts</label>
+        <input type="text" class="form-control" id="description" name="thoughts">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">What are you Working on now?</label>
+        <input type="text" class="form-control" id="description" name="question1">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">What's your favourite thing about MindStarters</label>
+        <input type="text" class="form-control" id="description" name="question2">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Any specific mentors that standout in your mind as super helpful? </label>
+        <input type="text" class="form-control" id="description" name="question3">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">MindStarters in a nutshell?</label>
+        <input type="text" class="form-control" id="description" name="question4">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Upload Your Image</label>
+        <input type="file" class="form-control" id="image" name="image">
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{% endblock %}
