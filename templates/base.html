@@ -12,6 +12,7 @@
     <!-- Navigation -->
     {% if user.is_active %}
         {% if user.is_mentor %}
+        <h1 class="center">user</h1>
             {% include 'partials/_navbar_mentor.html' %}
         {% else %}
             {% include 'partials/_navbar.html' %}

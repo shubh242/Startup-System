@@ -42,7 +42,7 @@ def contacts_list(request):
     context = {}
     context['valid'] = True
     if user.is_active:    
-        users = Client.objects.all().exclude(username=user)
+        users = User.objects.all().exclude(username=user)
         print(users[0].username)
         context['users'] = users
     else:
