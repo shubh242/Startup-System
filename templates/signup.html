@@ -10,7 +10,7 @@
 
 	<!--Custom styles-->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<link rel="stylesheet" type="text/css" href="signup.css">
+	<link rel="stylesheet" type="text/css" href="{% static "css/signup.css" %}">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	
@@ -22,7 +22,7 @@
 		<div class="d-flex justify-content-center h-100">
 			<div class="card">
 				<div class="card-header">
-					<h3>Sign In</h3>
+					<h3>Login</h3>
 					<div class="d-flex justify-content-end social_icon">
 						<span><i class="fab fa-facebook-square"></i></span>
 						<span><i class="fab fa-google-plus-square"></i></span>
@@ -31,17 +31,17 @@
 				</div>
 				<div class="card-body">
 					<form method="POST">
+						{% csrf_token %}
 						<div class="input-group form-group">
-							<div class="input-group-prepend">
+							<div class="input-group-prepend form-group mt-10">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
+								<label style="color: aliceblue; margin-top: 5px; margin-right: 2px;">Username</label>
+        						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username">
 							</div>
-								<table>
-									{% csrf_token %}
-									{{form}}
-								</table>
+							<div class="input-group-prepend form-group mt-5">
+								<label style="color: aliceblue; margin-top: 5px; margin-right: 10px; margin-left: 13%;">Password</label>
+								<input type="password" class="form-control border" id="exampleInputPassword1" name="password" onmouseover="this.type='text'" onmouseout="this.type='password'">
 							</div>
-						<div class="row align-items-center remember">
-							<input type="checkbox">Remember Me
 						</div>
 						<div class="form-group">
 							<input type="submit" value="Login" class="btn float-right login_btn">
@@ -50,7 +50,7 @@
 				</div>
 				<div class="card-footer">
 					<div class="d-flex justify-content-center links">
-						Don't have an account?<a href="#">Sign Up</a>
+						<a href={% url 'signup' %}>Don't have an Account yet? Signup Here</a>
 					</div>
 					<div class="d-flex justify-content-center">
 						<a href="#">Forgot your password?</a>

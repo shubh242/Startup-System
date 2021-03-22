@@ -17,38 +17,42 @@ What our members are saying
 {% endblock %}
 
 {% block content %}
-    {% for feedback in feedbacks %}
-        <div class="container mx-auto">
-            <div class="col-md-5 mx-auto mt-5" align="center">
-                <h1>{{feedback.username}}</h1>
-            </div>
-            <div class="col-md-5 mx-auto mt-5" align="center">
-                <h1>{{feedback.thoughts}}</h1>
-            </div>
-          
-            <div class="col-md-5 mx-auto mt-5" align="center">
-                <h1>What are you Working on now?</h1>
-                <h2>{{feedback.question1}}</h2>
-            </div>
-            <div class="col-md-5 mx-auto mt-5" align="center">
-                <h1>What's your favourite thing about MindStarters</h1>
-                <h2>{{feedback.question2}}</h2>
-            </div>
-            <div class="col-md-5 mx-auto mt-5" align="center">
-                <h1>Any specific mentors that standout in your mind as super helpful?</h1>
-                <h2>{{feedback.question3}}</h2>
-            </div>
-            <div class="col-md-5 mx-auto mt-5" align="center">
-                <h1>MindStarters in a nutshell?</h1>
-                <h1>{{feedback.question4}}</h1>
-            </div>
-            <div class="col col-md-5 mx-auto center p-5 mb-5" align="center">
-                <div class="col-md-8 mx-auto border border border-dark rounded bg-secondary p-2" controls>
-                    <img src={{feedback.image.url}} alt="image">
+    {% if feedbacks %}
+        {% for feedback in feedbacks %}
+            <div class="container mx-auto">
+                <div class="col-md-5 mx-auto mt-5" align="center">
+                    <h1>{{feedback.username}}</h1>
+                </div>
+                <div class="col-md-5 mx-auto mt-5" align="center">
+                    <h1>{{feedback.thoughts}}</h1>
+                </div>
+            
+                <div class="col-md-5 mx-auto mt-5" align="center">
+                    <h1>What are you Working on now?</h1>
+                    <h2>{{feedback.question1}}</h2>
+                </div>
+                <div class="col-md-5 mx-auto mt-5" align="center">
+                    <h1>What's your favourite thing about MindStarters</h1>
+                    <h2>{{feedback.question2}}</h2>
+                </div>
+                <div class="col-md-5 mx-auto mt-5" align="center">
+                    <h1>Any specific mentors that standout in your mind as super helpful?</h1>
+                    <h2>{{feedback.question3}}</h2>
+                </div>
+                <div class="col-md-5 mx-auto mt-5" align="center">
+                    <h1>MindStarters in a nutshell?</h1>
+                    <h1>{{feedback.question4}}</h1>
+                </div>
+                <div class="col col-md-5 mx-auto center p-5 mb-5" align="center">
+                    <div class="col-md-8 mx-auto border border border-dark rounded bg-secondary p-2" controls>
+                        <img src={{feedback.image.url}} alt="image">
+                    </div>
                 </div>
             </div>
-        </div>
 
-       
-    {% endfor %}
+        
+        {% endfor %}
+    {% else %}
+    <h1 class="text-center">There are no feedbacks right now</h1>
+    {% endif %}
 {% endblock %}
