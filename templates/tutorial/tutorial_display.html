@@ -1,53 +1,62 @@
-{% extends 'base.html' %}
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>TUTORIALS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static "css/homepage.css" %}">
+    <script src="homepage.js"></script>
+  </body>
+</head>
+<body>
+  <!--header part-->
+  <div class="container-fluid" >
+   <h1 class="text-center"><span style="color: rgb(12, 11, 10);font-family: Georgia, 'Times New Roman', Times, serif;font-weight: bolder;">TUTORIALS GALLERY</span>
+  </div>
 
-{% block title %}
-Tutorials
-{% endblock %}
-
-{% block upscript %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-{% endblock %}
-
-{% block header %}
-Tutorials
-{% endblock %}
-
-{% block subheader %}
-  {% if valid %}
-    Click to have a conversation
-  {% else %}
-    Please login to continue
-  {% endif %}
-{% endblock %}
-
-{% block content %}
-    {% for tutorial in tutorials %}
-        <div class="container mx-auto">
-            <div class="col-md-5 mx-auto mt-5" align="center">
-                <h1>{{tutorial.tutorial_title}}</h1>
+<!--video part-->  
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      {% if tutorials %}
+          {% for tutorial in tutorials %}
+            <div class="row-2 col-md-5">
+              <!-- Video -->
+              <div align="center" style="height: fit-content; width: fit-content; display: block; text-align: center;">
+                <div class="center">
+                  <label>Title:-</label>
+                  <h5 align = "center" display = "block">{{tutorial.tutorial_title}}</h5>
+                </div>
+                <div class="center"></div>
+                <label>Descrptions:-</label>
+                <h5 align = "center" display = "block">{{tutorial.tutorial_description}}</h5>
+                <div class="center"></div>
+                <label>Uploaded by:-</label>
+                <h5 align = "center" display = "block">{{tutorial.tutorial_uploader}}</h5>
+                <h5 align = "center" display = "block">Mentoring session related to {{tutorial.tutorial_tags}}</h5>
+              </div>
+                <div class="embed-responsive embed-responsive-16by9 mt-5 mb-3" display = "block">
+                  <video class="embed-responsive-item" src={{tutorial.tutorial_video.url}} type="video/mp4/avi"
+                    allowfullscreen controls></video>
+                </div>
+                <form action={% url 'likes_tutorial' tutorial.id %} method="POST">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-info">
+                      <span class="badge badge-info" style="color: white;">{{tutorial.tutorial_like.count}}</span> Likes
+                  </button>
+                </form>
             </div>
-            <div class="col-md-5 mx-auto mt-5" align="center">
-                <h1>{{tutorial.tutorial_description}}</h1>
-            </div>
-            <div class="col-md-5 mx-auto mt-5" align="center">
-                <h1>{{tutorial.tutorial_uploader}}</h1>
-            </div>
-            <div class="col-md-5 mx-auto mt-5" align="center">
-                <h1>{{tutorial.tutorial_tags}}</h1>
-            </div>
-            <div class="video col-md-5 mx-auto center p-5 mb-5" align="center">
-                <video class="col-md-8 mx-auto border border border-dark rounded bg-secondary p-2" controls>
-                    <source src={{tutorial.tutorial_video.url}} type="video/mp4">
-                </video>
-            </div>
-        </div>
-
-        <form action={% url 'likes_tutorial' tutorial.id %} method="POST">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-info">
-                <span class="badge badge-info" style="color: white;">{{tutorial.tutorial_like.count}}</span> Likes
-            </button>
-        </form>
-    {% endfor %}
-{% endblock %}
+          {% endfor %}
+      {% else %}
+        <div class="col-md-10 mx-auto mt-10" align="center">
+          <h1>NO TUTORIALS AVAILABLE RIGHT NOW!!</h1>
+        </div>       
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>

@@ -32,6 +32,5 @@ def feedback_display(request):
     context['valid'] = True
     if user.is_active:
         feedbacks = Feedback.objects.all()
-        print(feedbacks[0].feedback_uploader)
         context['feedbacks'] = feedbacks
     return render(request , 'Feedback/feedback_display.html' , context)

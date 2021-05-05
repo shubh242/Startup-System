@@ -28,7 +28,6 @@ def tutorial_display(request):
     context['valid'] = True
     if user.is_active:
         tutorials = Tutorial.objects.all()
-        print(tutorials[0].tutorial_uploader)
         context['tutorials'] = tutorials
     return render(request , 'tutorial/tutorial_display.html' , context)
 

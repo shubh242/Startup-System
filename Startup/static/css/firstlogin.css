@@ -1,0 +1,23 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    padding: 15px;
+}
+
+.container{
+    display: flex;
+    
+
+}
+.card{
+    background-color: #906DD9;
+    box-shadow: 10px 10px;
+}
+.container >div{
+    margin: 100px;
+}
+.container.card >img{
+background-color:#52298B;    
+}

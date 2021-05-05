@@ -67,7 +67,7 @@ def user_login(request):
                 return HttpResponseRedirect(reverse('login'))
     else:
         print('user is active')
-    return render(request , 'loginpage/login.html' , context)
+    return render(request , 'signup.html' , context)
 
 def user_logout(request):
     if request.user.is_authenticated:
